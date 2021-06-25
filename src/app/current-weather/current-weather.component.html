@@ -1,8 +1,8 @@
-<div>
+<div *ngIf="current">
   <div>
     <span>{{current.city}}, {{current.country}}</span>
     <br/>
-    <span>{{current.date | date:'fulldate'}} </span>
+    <span>{{current.date | date:'fullDate'}} </span>
 </div>
   <div>
     <img [src]='current.image'/>
