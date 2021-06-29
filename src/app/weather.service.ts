@@ -9,14 +9,26 @@ import {map}from 'rxjs/operators';
   providedIn: 'root'
 })
 export class WeatherService{
-
   constructor(private httpClient:HttpClient) { }
 
-  getCurrentWeather( city:string,country:string){
-   return this.httpClient.get<IcurrentweatherData>(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${environment.appId}`
+  getCurrentWeather( search:string | number, country?:string)
+  {
+    let uriParam ='';
+    if(typeof search === 'string'){
+      uriParam= `q=${search}`
+    }
+    else {
+        uriParam= `zip=${search}`
+    }
+
+    if (country){
+        uriParam=`${uriParam},${country}`
+    }
+  
+    return this.httpClient.get<IcurrentweatherData>(
+      `http://api.openweathermap.org/data/2.5/weather?${uriParam}&appid=${environment.appId}`
     ).pipe(
-      map((data: IcurrentweatherData) => this.transformtoIcurrentweather(data))
+      map(data => this.transformtoIcurrentweather(data))
 
     )
   }
