@@ -15,12 +15,14 @@ import { CitySearchComponent } from './city-search/city-search.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import{MatFormFieldModule} from '@angular/material/form-field';
 import{MatInputModule} from'@angular/material/input';
+import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrentWeatherComponent,
-    CitySearchComponent
+    CitySearchComponent,
+    HourlyWeatherComponent
   ],
   imports: [
     BrowserModule,

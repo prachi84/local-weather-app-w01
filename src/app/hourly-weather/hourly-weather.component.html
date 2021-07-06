@@ -1,0 +1,39 @@
+<div *ngIf="hourly">
+ <div class="hourly">
+  <div>
+    <div>{{hourly.hourlyDateData[0] | date:'shortTime'}}&#8457;</div>
+    <img [src]='hourly.hourlyImageData[0]'/>
+    <span>{{hourly.hourlyTempData[0] | number:'1.0-0'}}&#8457;</span>
+    {{hourly.description}}
+  </div>
+  <div>
+    <div>{{hourly.hourlyDateData[1] | date:'shortTime'}}&#8457;</div>
+    <img [src]='hourly.hourlyImageData[1]'/>
+    <span>{{hourly.hourlyTempData[1] | number:'1.0-0'}}&#8457;</span>
+    {{hourly.description}}
+  </div>
+  <div>
+    <div>{{hourly.hourlyDateData[2] | date:'shortTime'}}&#8457;</div>
+    <img [src]='hourly.hourlyImageData[2]'/>
+    <span>{{hourly.hourlyTempData[2] | number:'1.0-0'}}&#8457;</span>
+    {{hourly.description}}
+  </div>
+  <div>
+    <div>{{hourly.hourlyDateData[3] | date:'shortTime'}}&#8457;</div>
+    <img [src]='hourly.hourlyImageData[3]'/>
+    <span>{{hourly.hourlyTempData[3] | number:'1.0-0'}}&#8457;</span>
+    {{hourly.description}}
+  </div>
+  <div>
+    <div>{{hourly.hourlyDateData[4] | date:'shortTime'}}&#8457;</div>
+    <img [src]='hourly.hourlyImageData[4]'/>
+    <span>{{hourly.hourlyTempData[4] | number:'1.0-0'}}&#8457;</span>
+    {{hourly.description}}
+  </div>
+  </div>
+
+  <div>
+    {{hourly.description}}
+  </div>
+</div>
+

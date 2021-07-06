@@ -1,14 +1,20 @@
 
 <div style="text-align: center;">
   <mat-toolbar color='primary'>
-    Localcast Weather
+    <a href="http://localhost:4001" class="navibar"><img src="./assets/image/weatherAppLogo.png" width="50" height="50"/></a>&nbsp;Localcast Weather
     </mat-toolbar>
-
-  <div>your city,your forecast ,right now!</div>
+    <br>
+  <div class="search">
   <app-city-search (searchEvent)="doSearch($event)"></app-city-search>
-  <h2>current Weather
-  </h2>
-  <mat-card color="primary">
-    <app-current-weather [current]="currentWeather"></app-current-weather>
+ </div>
+  <div class= "headers">Current Weather</div>
+  <br>
+  <br>
+   <app-current-weather [current]="currentWeather"></app-current-weather>
+   <br>
+   <div class="headers">12 Hour Weather Forecast</div>
+    <br>
+   <mat-card class ="matClass" style="margin:20px;">
+    <app-hourly-weather [hourly]="hourlyWeather"></app-hourly-weather>
   </mat-card>
 </div>

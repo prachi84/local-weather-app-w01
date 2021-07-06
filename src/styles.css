@@ -2,3 +2,77 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.search {
+  margin-top: 0;
+  float: right;
+}
+.search {
+  position:absolute;
+  right:5%;
+  top:2%;
+  background-color:#7b9eb3;
+  height: 39px;
+  border-radius: 10px;
+}
+
+.mat-toolbar.mat-primary {
+  background: hsl(216, 95%, 23%);
+  color: rgb(255, 255, 255);
+  font-size: 2.3em;
+  font-family: "Quicksand", sans-serif;
+}
+
+.hourly{
+  display:inline-flex;
+  gap: 100px;
+}
+
+body{
+  background-color:#0ca6d4;
+  color:rgb(7, 1, 34);
+  font-size:large;
+}
+
+.mat-focused .mat-form-field-label {
+  color: #002fff !important;
+ }
+
+.mat-form-field-ripple {
+  background-color:#1900ff !important;;
+ }
+ mat-hint {
+  color:rgb(91, 138, 207) !important;
+}
+
+.container-fluid{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  }
+  .mat-toolbar {
+    height: 75px;
+
+}
+
+.matClass{
+  color:white;
+  background-color:rgb(14, 128, 167);
+}
+
+.headers{
+  font-size:xX-large;
+  float:center;
+  color:rgb(0, 0, 80);
+}
+
+
+.current{
+  font-size: x-large;
+  color:whitesmoke;
+  font-weight:bold;
+}

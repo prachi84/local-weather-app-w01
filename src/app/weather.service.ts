@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IcurrentweatherData } from './icurrentweather-data';
+import { IcurrentweatherData, IHourlyWeatherData } from './icurrentweather-data';
 import { environment } from 'src/environments/environment';
-import { Icurrentweather } from './icurrentweather';
+import { Icurrentweather, IHourlyWeather } from './icurrentweather';
 import {map}from 'rxjs/operators';
 
 @Injectable({
@@ -45,4 +45,56 @@ export class WeatherService{
 
     }
   }
-}
+
+  getHourlyWeather( search:string | number, country?:string)
+  {
+    let uriParam ='';
+    if(typeof search === 'string'){
+      uriParam= `q=${search}`
+    }
+    else {
+        uriParam= `zip=${search}`
+    }
+
+    if (country){
+        uriParam=`${uriParam},${country}`
+    }
+  
+    return this.httpClient.get<IHourlyWeatherData>(
+      `http://api.openweathermap.org/data/2.5/forecast?${uriParam}&appid=${environment.appId}`
+    ).pipe(
+      map(data => this.transformtoIHourlyweather(data))
+    )
+  }
+
+  private transformtoIHourlyweather(data:IHourlyWeatherData):
+  IHourlyWeather{
+    console.log("Data ",data);
+    return{
+      city:data.city.name,
+      country:data.city.country,
+      date:new Date(data.list[0].dt * 1000),
+      temperature:data.list[0].main.temp * 9/5 - 459.67,
+      description:data.list[0].weather[0].description,
+      hourlyTempData:[(data.list[0].main.temp * 9/5 - 459.67),
+                      (data.list[1].main.temp * 9/5 - 459.67),
+                      (data.list[2].main.temp * 9/5 - 459.67),
+                      (data.list[3].main.temp * 9/5 - 459.67),
+                      (data.list[4].main.temp * 9/5 - 459.67),
+                      (data.list[5].main.temp * 9/5 - 459.67)],
+      hourlyDateData:[(new Date(data.list[0].dt*1000)),
+                      (new Date(data.list[1].dt*1000)),
+                      (new Date(data.list[2].dt*1000)),
+                      (new Date(data.list[3].dt*1000)),
+                      (new Date(data.list[4].dt*1000)),
+                      (new Date(data.list[5].dt*1000))],
+      hourlyImageData:[(`http://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`),
+                       (`http://openweathermap.org/img/w/${data.list[1].weather[0].icon}.png`),
+                       (`http://openweathermap.org/img/w/${data.list[2].weather[0].icon}.png`),
+                       (`http://openweathermap.org/img/w/${data.list[3].weather[0].icon}.png`),
+                       (`http://openweathermap.org/img/w/${data.list[4].weather[0].icon}.png`),
+                       (`http://openweathermap.org/img/w/${data.list[5].weather[0].icon}.png`)]
+    }
+  }
+  }
+

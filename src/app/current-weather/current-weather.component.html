@@ -2,15 +2,10 @@
   <div>
     <span>{{current.city}}, {{current.country}}</span>
     <br/>
-    <span>{{current.date | date:'fullDate'}} </span>
+    <span>{{current.date | date:'short'}} </span>
 </div>
   <div>
     <img [src]='current.image'/>
-    <span>{{current.temperature | number:'1.0-0'}}&#8457;</span>
-
-  </div>
-  <div>
-    {{current.description}}
-
+    <span>{{current.temperature | number:'1.0-0'}}&#8457;</span> {{current.description}}
   </div>
 </div>
